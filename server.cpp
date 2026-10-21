@@ -1,7 +1,7 @@
 // Airport Runway & Flight Management System - GUI edition (Team: THE VISIONARIES)
-// macOS Compatible Build: clang++ -std=c++11 ff.cpp -o airport_app
+// macOS Compatible Build: g++ -std=c+11 server.cpp -o server
 
-#include <iostream>
+#include <iostream>  //Standard Library headers
 #include <string>
 #include <queue>
 #include <stack>
@@ -13,11 +13,11 @@
 #include <cstdio>
 #include <ctime>
 #include <cstdlib>
-#include <sys/socket.h>
+#include <sys/socket.h>  //POSIX socket headers for the network server
 #include <netinet/in.h>
 #include <unistd.h>
 
-typedef int SOCKET;
+typedef int SOCKET;     //Socket compatability: SOCKET is a plain int in macOS/Linux
 #define closesocket close
 
 using namespace std;
@@ -42,10 +42,10 @@ struct ComparePriority {
         return a.entryOrder > b.entryOrder;
     }
 };
-
+//Global state: all flights,counter,and the simulated clock(start at 540 min = 9:00 AM)
 Flight flights[MAX_FLIGHTS];
 int flightCount = 0, entryCounter = 0, tickNo = 0, nextRunway = 0, clockMin = 540;
-priority_queue<Flight, vector<Flight>, ComparePriority> pq;
+priority_queue<Flight, vector<Flight>, ComparePriority> pq;  //pq: waiting flights , most urgent first (uses ComparePriority)
 queue<Flight> runwayQueue;
 stack<Flight> completed;
 bool runwayBusy[RUNWAYS] = { false, false };
