@@ -1,9 +1,22 @@
-# airport-runway-and-flight-management-system
-A c++ based system for managing airport runways , flight departures , arrivals and emergency priorities
+# Airport Runway and Flight Management System
+
+A C++ based system for managing airport runways, flight departures, arrivals, and emergency priorities.
+
 ## Features
+
 - Runway allocation
-- Flight depatures and arrivals
+- Flight departures and arrivals
 - Emergency priority handling
-## how to run
-g++ server.cpp-o server
+
+## How to Run
+
+```bash
+g++ server.cpp -o server
 ./server
+```
+
+## Future Improvements
+
+- Runway conflict detection
+- Delay and cancellation handling
+- Flight log storage
